@@ -6,6 +6,7 @@ public class SnakeAndLadder {
     //variable
     static int position =0; //initialize position
     static int getPosition = 0;
+    static int numberOfDiceRoll = 0;
 
     public static void main(String[] args) {
         SnakeAndLadder snakeLad = new SnakeAndLadder();
@@ -29,9 +30,12 @@ public class SnakeAndLadder {
         * in case the player position go above 100 , the player stay
         * in the same previous position till the player gets the exact
         * number than ads to 100
+        * Report the number of times the dice was played to win the game and also the position
+        * after every die role
          */
         while (position < WIN_POSITION ){
             int dice = rollDice();
+            numberOfDiceRoll++;
             int option = (int) (Math.floor(Math.random() * 10) % 3);
             System.out.println("Player Roll Option is : " + option);
             System.out.println("0.no Player 1. Ladder 2.Snake");
@@ -59,6 +63,7 @@ public class SnakeAndLadder {
             }
         }
         System.out.println("Winning position : " +position);
+        System.out.println("Count Number of Time Dice Roll TO win :" +numberOfDiceRoll);
     }
 
 }
