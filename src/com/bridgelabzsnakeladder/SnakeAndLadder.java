@@ -26,6 +26,9 @@ public class SnakeAndLadder {
         * use Random Math class to generating number between 0 to 2
         * use switch to check player option
         * adding while loop to check win position
+        * in case the player position go above 100 , the player stay
+        * in the same previous position till the player gets the exact
+        * number than ads to 100
          */
         while (position < WIN_POSITION ){
             int dice = rollDice();
@@ -37,21 +40,25 @@ public class SnakeAndLadder {
                     System.out.println("no Player is on " +position);
                     break;
                 case 1:
-                    position+= dice;
-                    if ((position - dice) < getPosition){
-                        position = getPosition;
+                    if ((position + dice) > WIN_POSITION){
+                        position = WIN_POSITION;
+                    }else{
+                        position +=dice;
                     }
                     System.out.println("Ladder is on " +position+" position");
                     break;
                 case 2:
                     position-=dice;
+                    if ((position -dice) < getPosition){
+                        position = getPosition;
+                    }
                     System.out.println("Snake is on " +position+ " position");
                     break;
                 default:
                     System.out.println("system error");
             }
         }
-    
+        System.out.println("Winning position : " +position);
     }
 
 }
